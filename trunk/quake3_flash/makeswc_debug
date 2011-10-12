@@ -1,0 +1,203 @@
+#Command line to make this .swc:
+#alc-on;	(needed 1st time only)
+#make -j3 -f makeswc;
+
+CDIR=id/code/client
+CMDIR=id/code/qcommon
+SDIR=id/code/server
+BLIBDIR=id/code/botlib
+JPDIR=id/code/jpeg-6
+RDIR=id/code/renderer
+FLDIR=id/code/flash
+FTDIR=id/code/ft2
+CGDIR=id/code/cgame
+GDIR=id/code/game
+Q3UIDIR=id/code/q3_ui
+UIDIR=id/code/ui
+
+SRCS= \
+	$(CDIR)/cl_cgame.c \
+	$(CDIR)/cl_cin.c \
+	$(CDIR)/cl_console.c \
+	$(CDIR)/cl_input.c \
+	$(CDIR)/cl_keys.c \
+	$(CDIR)/cl_main.c \
+	$(CDIR)/cl_net_chan.c \
+	$(CDIR)/cl_parse.c \
+	$(CDIR)/cl_scrn.c \
+	$(CDIR)/cl_ui.c \
+	\
+	$(CMDIR)/cm_load.c \
+	$(CMDIR)/cm_patch.c \
+	$(CMDIR)/cm_polylib.c \
+	$(CMDIR)/cm_test.c \
+	$(CMDIR)/cm_trace.c \
+	\
+	$(CMDIR)/cmd.c \
+	$(CMDIR)/common.c \
+	$(CMDIR)/cvar.c \
+	$(CMDIR)/files.c \
+	$(CMDIR)/md4.c \
+	$(CMDIR)/msg.c \
+	$(CMDIR)/net_chan.c \
+	$(CMDIR)/huffman.c \
+	\
+	$(CDIR)/snd_adpcm.c \
+	$(CDIR)/snd_dma.c \
+	$(CDIR)/snd_mem.c \
+	$(CDIR)/snd_mix.c \
+	$(CDIR)/snd_wavelet.c \
+	\
+	$(SDIR)/sv_bot.c \
+	$(SDIR)/sv_ccmds.c \
+	$(SDIR)/sv_client.c \
+	$(SDIR)/sv_game.c \
+	$(SDIR)/sv_init.c \
+	$(SDIR)/sv_main.c \
+	$(SDIR)/sv_net_chan.c \
+	$(SDIR)/sv_snapshot.c \
+	$(SDIR)/sv_world.c \
+	\
+	$(CMDIR)/unzip.c \
+	$(CMDIR)/vm.c \
+	$(CMDIR)/vm_interpreted.c \
+	\
+	$(BLIBDIR)/be_aas_bspq3.c \
+	$(BLIBDIR)/be_aas_cluster.c \
+	$(BLIBDIR)/be_aas_debug.c \
+	$(BLIBDIR)/be_aas_entity.c \
+	$(BLIBDIR)/be_aas_file.c \
+	$(BLIBDIR)/be_aas_main.c \
+	$(BLIBDIR)/be_aas_move.c \
+	$(BLIBDIR)/be_aas_optimize.c \
+	$(BLIBDIR)/be_aas_reach.c \
+	$(BLIBDIR)/be_aas_route.c \
+	$(BLIBDIR)/be_aas_routealt.c \
+	$(BLIBDIR)/be_aas_sample.c \
+	$(BLIBDIR)/be_ai_char.c \
+	$(BLIBDIR)/be_ai_chat.c \
+	$(BLIBDIR)/be_ai_gen.c \
+	$(BLIBDIR)/be_ai_goal.c \
+	$(BLIBDIR)/be_ai_move.c \
+	$(BLIBDIR)/be_ai_weap.c \
+	$(BLIBDIR)/be_ai_weight.c \
+	$(BLIBDIR)/be_ea.c \
+	$(BLIBDIR)/be_interface.c \
+	$(BLIBDIR)/l_crc.c \
+	$(BLIBDIR)/l_libvar.c \
+	$(BLIBDIR)/l_log.c \
+	$(BLIBDIR)/l_memory.c \
+	$(BLIBDIR)/l_precomp.c \
+	$(BLIBDIR)/l_script.c \
+	$(BLIBDIR)/l_struct.c \
+	\
+	$(JPDIR)/jcapimin.c \
+	$(JPDIR)/jchuff.c \
+	$(JPDIR)/jcinit.c \
+	$(JPDIR)/jccoefct.c \
+	$(JPDIR)/jccolor.c \
+	$(JPDIR)/jfdctflt.c \
+	$(JPDIR)/jcdctmgr.c \
+	$(JPDIR)/jcphuff.c \
+	$(JPDIR)/jcmainct.c \
+	$(JPDIR)/jcmarker.c \
+	$(JPDIR)/jcmaster.c \
+	$(JPDIR)/jcomapi.c \
+	$(JPDIR)/jcparam.c \
+	$(JPDIR)/jcprepct.c \
+	$(JPDIR)/jcsample.c \
+	$(JPDIR)/jdapimin.c \
+	$(JPDIR)/jdapistd.c \
+	$(JPDIR)/jdatasrc.c \
+	$(JPDIR)/jdcoefct.c \
+	$(JPDIR)/jdcolor.c \
+	$(JPDIR)/jddctmgr.c \
+	$(JPDIR)/jdhuff.c \
+	$(JPDIR)/jdinput.c \
+	$(JPDIR)/jdmainct.c \
+	$(JPDIR)/jdmarker.c \
+	$(JPDIR)/jdmaster.c \
+	$(JPDIR)/jdpostct.c \
+	$(JPDIR)/jdsample.c \
+	$(JPDIR)/jdtrans.c \
+	$(JPDIR)/jerror.c \
+	$(JPDIR)/jidctflt.c \
+	$(JPDIR)/jmemmgr.c \
+	$(JPDIR)/jmemnobs.c \
+	$(JPDIR)/jutils.c \
+	\
+	$(RDIR)/tr_animation.c \
+	$(RDIR)/tr_backend.c \
+	$(RDIR)/tr_bsp.c \
+	$(RDIR)/tr_cmds.c \
+	$(RDIR)/tr_curve.c \
+	$(RDIR)/tr_flares.c \
+	$(RDIR)/tr_font.c \
+	$(RDIR)/tr_image.c \
+	$(RDIR)/tr_init.c \
+	$(RDIR)/tr_light.c \
+	$(RDIR)/tr_main.c \
+	$(RDIR)/tr_marks.c \
+	$(RDIR)/tr_mesh.c \
+	$(RDIR)/tr_model.c \
+	$(RDIR)/tr_noise.c \
+	$(RDIR)/tr_scene.c \
+	$(RDIR)/tr_shade.c \
+	$(RDIR)/tr_shade_calc.c \
+	$(RDIR)/tr_shader.c \
+	$(RDIR)/tr_shadows.c \
+	$(RDIR)/tr_sky.c \
+	$(RDIR)/tr_surface.c \
+	$(RDIR)/tr_world.c \
+	\
+	$(GDIR)/g_syscalls.c \
+	\
+	$(GDIR)/bg_misc.c \
+	$(GDIR)/bg_pmove.c \
+	$(GDIR)/bg_slidemove.c \
+    $(GDIR)/q_math.c \
+    $(GDIR)/q_shared.c \
+	\
+	$(FLDIR)/gl_wrapper.c \
+	$(FLDIR)/flash_glimp.c \
+	$(FLDIR)/flash_input.c \
+	$(FLDIR)/flash_main.c \
+	$(FLDIR)/flash_snddma.c \
+	$(FLDIR)/flash_sys.c \
+	$(FLDIR)/flash_net.c
+
+SRCTYPE=c
+CC=gcc
+
+WARN= -Wall -Werror-implicit-function-declaration
+OUTPUT= quake
+CFLAGS= $(WARN) -DFLASH -DNO_ASM -DBOTLIB -DGAME_HARD_LINKED -DUI_HARD_LINKED
+
+OPTIM= -g
+OBJDIR= debug
+
+#The reason we move the swc instead of compiling it directly to the destination lib folder,
+#is that it would prefix the folder names onto the namespace of the CLibInit class.
+OUTPUTFILE= $(OUTPUT).swc
+OUTPUTDIR= lib
+
+all: $(OBJDIR)/$(OUTPUTFILE)
+	@mkdir -p $(OUTPUTDIR)
+	cp $(OBJDIR)/$(OUTPUTFILE) $(OUTPUTDIR)/$(OUTPUTFILE)
+
+#make sure all the bullet directories are on the vpath, so we can make a list of .o files
+VPATH += $(dir $(SRCS))
+OBJS= $(patsubst %.$(SRCTYPE),$(OBJDIR)/%.o,$(notdir $(SRCS)))
+$(OBJDIR)/$(OUTPUTFILE): $(OBJS)
+	@#export ACHACKS_TMPS=1; keeps the generated .as file
+	export ACHACKS_TMPS=0; cd $(OBJDIR); $(CC) $(notdir $(OBJS)) $(OPTIM) -swc -o $(OUTPUTFILE)
+	
+INCLUDES=
+$(OBJDIR)/%.o: %.$(SRCTYPE)
+	@mkdir -p $(OBJDIR)
+	@rm -f $@
+	cd $(OBJDIR); $(CC) $(CFLAGS) $(INCLUDES) $(OPTIM) -c ../$< -o $(notdir $@)
+	
+clean:
+	@rm -f $(OBJS)
+	

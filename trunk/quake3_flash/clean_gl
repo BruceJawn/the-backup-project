@@ -1,0 +1,5 @@
+rm release/flash_main.o
+rm release/flash_glimp.o
+rm release/jerror.o
+rm release/jmemnobs.o
+rm release/tr_*.o
